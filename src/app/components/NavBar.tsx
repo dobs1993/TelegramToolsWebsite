@@ -1,55 +1,48 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
 export default function NavBar() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setLoggedIn(!!token);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-4 bg-black text-white shadow-md">
-      {/* Logo */}
-      <Link href="/" className="text-lg font-bold">
-        TelegramTools
-      </Link>
+    <nav className="fixed top-0 w-full bg-black text-white shadow-md z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        {/* Logo */}
+        <Link href="/">
+          <span className="text-xl font-bold tracking-tight cursor-pointer">
+            Telegram<span className="text-[#229ED9]">Tools</span>
+          </span>
+        </Link>
 
-      {/* Navigation Links */}
-      <div className="flex space-x-6 items-center">
-        {!loggedIn ? (
-          <>
-            <Link href="/" className="hover:text-blue-400">Home</Link>
-            <Link href="/forwarder-info" className="hover:text-blue-400">Forwarder</Link>
-            <Link href="/admin-info" className="hover:text-blue-400">Employee Manager</Link>
-            <Link href="/betting-info" className="hover:text-blue-400">Betting Tools</Link>
-            <Link href="/pricing" className="hover:text-blue-400">Pricing</Link>
-            <Link href="/login" className="hover:text-blue-400">Login</Link>
-            <Link href="/register" className="hover:text-blue-400">Register</Link>
-          </>
-        ) : (
-          <>
-            <Link href="/dashboard" className="hover:text-blue-400">Dashboard</Link>
-            <Link href="/forwarder" className="hover:text-blue-400">Forwarder</Link>
-            <Link href="/admin" className="hover:text-blue-400">Employee Manager</Link>
-            <Link href="/betting" className="hover:text-blue-400">Betting Tools</Link>
-            <Link href="/account" className="hover:text-blue-400">My Account</Link>
-            <button
-              onClick={handleLogout}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Logout
-            </button>
-          </>
-        )}
+        {/* Links */}
+        <div className="flex items-center gap-6 text-sm">
+          <Link href="/" className="hover:text-[#229ED9] transition font-medium">
+            Home
+          </Link>
+          <Link href="/forwarder-info" className="hover:text-[#229ED9] transition font-medium">
+            Forwarder
+          </Link>
+          <Link href="/admin-info" className="hover:text-[#229ED9] transition font-medium">
+            Employee Manager
+          </Link>
+          <Link href="/betting-info" className="hover:text-[#229ED9] transition font-medium">
+            Betting Tools
+          </Link>
+          <Link href="/pricing" className="hover:text-[#229ED9] transition font-medium">
+            Pricing
+          </Link>
+          <Link href="/login" className="hover:text-[#229ED9] transition font-medium">
+            Login
+          </Link>
+          <Link href="/register" className="hover:text-[#229ED9] transition font-medium">
+            Register
+          </Link>
+
+
+          {/* Logout Button */}
+          <button className="ml-4 bg-[#ff0000] hover:bg-[#e60000] text-white text-sm font-bold py-2 px-4 rounded-lg transition">
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
   );

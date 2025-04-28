@@ -9,11 +9,18 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-white text-black">
+      <body className="bg-gray-100 text-black">
         <NavBar />
-        <main className="pt-20 max-w-7xl mx-auto px-4">
+        <main className="flex flex-col min-h-screen">
           {children}
         </main>
+        <a
+          href="https://t.me/MTDobs"
+          target="_blank"
+          className="fixed bottom-6 right-6 bg-[#0088cc] hover:bg-[#007ab8] text-white py-3 px-5 rounded-full shadow-lg z-50"
+        >
+          Chat with Us
+        </a>
       </body>
     </html>
   );
